@@ -221,7 +221,6 @@ uint32_t count = 0x0000;
 float period = 0;
 float frequency = 0;
 int source = 1;
-int wait = 0;
 unsigned int Res = 0;
 unsigned int Freq = 0;
 
