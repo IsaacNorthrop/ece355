@@ -219,7 +219,6 @@ unsigned char Characters[][8] = {
 uint32_t edge = 0x0;
 uint32_t count = 0x0000;
 float period = 0;
-float frequency = 0;
 int source = 1;
 unsigned int Res = 0;
 unsigned int Freq = 0;
@@ -760,10 +759,8 @@ void EXTI2_3_IRQHandler()
 
 		/* Calculate period and frequency */
 		period = count/48000000.;
-		frequency = 1./period;
-
 		/* Set global variable */
-		Freq = frequency;
+		Freq = 1./period;
 
 		/* Clear count */
 		TIM2->CNT = ((uint32_t)0x00000000);
@@ -809,9 +806,9 @@ void EXTI0_1_IRQHandler()
 
 			/* Calculate frequency */
 			period = count/48000000.;
-			frequency = 1./period;
 
-			Freq = frequency;
+			/* Set global variable */
+			Freq = 1./period;
 
 			/* Clear count */
 			TIM2->CNT = ((uint32_t)0x00000000);
