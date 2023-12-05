@@ -799,7 +799,7 @@ void EXTI0_1_IRQHandler()
 			/* Stop timer */
 			TIM2->CR1 &= ~TIM_CR1_CEN;
 
-			/* Reset count */
+			/* Read count */
 			count = TIM2->CNT;
 
 			/* Reset edge counter */
