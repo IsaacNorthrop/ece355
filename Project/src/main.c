@@ -274,7 +274,7 @@ int main()
 	while (1)
 	{
 
-
+		/* Check if ADC has a value to serve */
 		if((ADC1->ISR & 0x00000001) != 0)
 		{
 
@@ -283,7 +283,8 @@ int main()
 			DAC->DHR12R1 = ADC1->DR;
 
 		}
-
+		
+		/* Check if the button has been pressed */
 		if((GPIOA->IDR & GPIO_IDR_0) != 0)
 		{
 			/* Wait for button to be released (PA0 = 0) */
