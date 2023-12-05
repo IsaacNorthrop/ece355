@@ -274,12 +274,16 @@ int main()
 	while (1)
 	{
 
-		/* Check if ADC has a value to serve */
+		/* Check if ADC is ready */
 		if((ADC1->ISR & 0x00000001) != 0)
 		{
-
+			/* Start conversion */
 			ADC1->CR |= ADC_CR_ADSTART;
+
+			/* Wait for conversion to finish */
 			while((ADC1->ISR & 0x4) == 0);
+			
+			/* Read ADC into DAC */
 			DAC->DHR12R1 = ADC1->DR;
 
 		}
@@ -289,10 +293,13 @@ int main()
 		{
 			/* Wait for button to be released (PA0 = 0) */
 			while((GPIOA->IDR & GPIO_IDR_0) != 0);
+			
+			/* Invert source */
 			if(source == 1)
 				source = 0;
 			else
 				source = 1;
+			
 		}
 		refresh_OLED();
 	}
