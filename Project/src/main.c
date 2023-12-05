@@ -780,7 +780,8 @@ void EXTI2_3_IRQHandler()
 void EXTI0_1_IRQHandler()
 {
 	/* Check if EXTI1 interrupt pending flag is indeed set */
-	if (((EXTI->PR & EXTI_PR_PR1) && !source) != 0){
+	if (((EXTI->PR & EXTI_PR_PR1) && !source) != 0)
+	{
 
 			/* First edge */
 			if(edge == 0x0){
